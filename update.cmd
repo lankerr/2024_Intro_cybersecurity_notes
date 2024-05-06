@@ -1,4 +1,6 @@
+@echo off
+for /f "tokens=2 delims==" %%I in ('wmic os get localdatetime /value') do set "dt=%%I"
+set "timestamp=%dt:~0,4%%dt:~4,2%%dt:~6,2%%dt:~8,2%%dt:~10,2%%dt:~12,2%"
 git add . --all
-set datetime=%date:~0,4%%date:~5,2%%date:~8,2%%time:~0,2%%time:~3,2%%time:~6,2%
-git commit -m "update %datetime%"
+git commit -m "update %timestamp%"
 git push
